@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 
+
 class ModuleDocFragment(object):
     # Git doc fragment
     DOCUMENTATION = '''
