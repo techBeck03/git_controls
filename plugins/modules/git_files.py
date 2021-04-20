@@ -3,6 +3,8 @@
 # Copyright: (c) 2018, Terry Jones <terry.jones@example.org>
 # GNU General Public License v3.0+ (see COPYING or https://www.gnu.org/licenses/gpl-3.0.txt)
 from __future__ import (absolute_import, division, print_function)
+from ansible_collections.techbeck03.git_controls.plugins.module_utils.git_util import GitModule, git_argument_spec
+from ansible.module_utils.basic import AnsibleModule
 __metaclass__ = type
 
 DOCUMENTATION = r'''
@@ -35,8 +37,7 @@ options:
             - The commit string used for git repo commit
         required: true
         type: str
-extends_documentation_fragment:
-    - git
+extends_documentation_fragment: techbeck03.git_controls.git
 author:
     - Brandon Beck (@techBeck03)
 '''
@@ -73,9 +74,6 @@ removed_files:
     returned: changed
     sample: '[/tmp/myrepo]'
 '''
-
-from ansible.module_utils.basic import AnsibleModule
-from ansible_collections.techbeck03.git_controls.plugins.module_utils.git import GitModule, git_argument_spec
 
 
 def run_module():

@@ -3,6 +3,8 @@
 # Copyright: (c) 2018, Terry Jones <terry.jones@example.org>
 # GNU General Public License v3.0+ (see COPYING or https://www.gnu.org/licenses/gpl-3.0.txt)
 from __future__ import (absolute_import, division, print_function)
+from ansible_collections.techbeck03.git_controls.plugins.module_utils.git_util import GitModule, git_argument_spec
+from ansible.module_utils.basic import AnsibleModule
 __metaclass__ = type
 
 DOCUMENTATION = r'''
@@ -39,8 +41,7 @@ options:
         required: false
         type: str
         default: False
-extends_documentation_fragment:
-    - git
+extends_documentation_fragment: techbeck03.git_controls.git
 author:
     - Brandon Beck (@techBeck03)
 '''
@@ -77,9 +78,6 @@ working_dir:
     sample: '/tmp/myrepo'
 '''
 
-from ansible.module_utils.basic import AnsibleModule
-from ansible_collections.techbeck03.git_controls.plugins.module_utils.git import GitModule, git_argument_spec
-
 
 def run_module():
     # define available arguments/parameters a user can pass to the module
@@ -87,7 +85,8 @@ def run_module():
         working_dir=dict(type='str', required=True),
         auto_generate_parent=dict(type='bool', default=False),
         pull=dict(type='bool', default=False),
-        state=dict(type='str', default="present", choices=['present', 'absent']),
+        state=dict(type='str', default="present",
+                   choices=['present', 'absent']),
     )
     module_args.update(git_argument_spec)
 
@@ -106,7 +105,8 @@ def run_module():
     pull = module.params.get("pull")
 
     if state == "present":
-        clone_result = git.cloneRepo(auto_generate_parent=auto_generate_parent, pull=pull)
+        clone_result = git.cloneRepo(
+            auto_generate_parent=auto_generate_parent, pull=pull)
         result['changed'] = bool(clone_result['status'] == 'modified')
         result['working_dir'] = clone_result['working_dir']
     elif state == "absent":
