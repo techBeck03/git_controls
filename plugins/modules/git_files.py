@@ -77,6 +77,7 @@ removed_files:
 from ansible.module_utils.basic import AnsibleModule
 from ansible_collections.techbeck03.git_controls.plugins.module_utils.git import GitModule, git_argument_spec
 
+
 def run_module():
     # define available arguments/parameters a user can pass to the module
     module_args = dict(
@@ -88,8 +89,8 @@ def run_module():
 
     result = dict(
         changed=False,
-        added_files = [],
-        removed_files = []
+        added_files=[],
+        removed_files=[]
     )
     module = AnsibleModule(
         argument_spec=module_args,
@@ -105,7 +106,7 @@ def run_module():
         add_result = git.addFiles(add_files)
         if add_result["status"] == 'modified':
             result["changed"] = True
-            result["added_files"] = add_result["changed_files"]    
+            result["added_files"] = add_result["changed_files"]
     # Handle removed files
     if remove_files and len(remove_files) > 0:
         remove_result = git.removeFiles(remove_files)
@@ -115,7 +116,7 @@ def run_module():
 
     if result["changed"]:
         git.commitFiles()
-    
+
     module.exit_json(**result)
 
 

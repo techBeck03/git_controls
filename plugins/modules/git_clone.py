@@ -80,6 +80,7 @@ working_dir:
 from ansible.module_utils.basic import AnsibleModule
 from ansible_collections.techbeck03.git_controls.plugins.module_utils.git import GitModule, git_argument_spec
 
+
 def run_module():
     # define available arguments/parameters a user can pass to the module
     module_args = dict(
@@ -106,7 +107,7 @@ def run_module():
 
     if state == "present":
         clone_result = git.cloneRepo(auto_generate_parent=auto_generate_parent, pull=pull)
-        result['changed'] = True if clone_result['status'] == 'modified' else False
+        result['changed'] = bool(clone_result['status'] == 'modified')
         result['working_dir'] = clone_result['working_dir']
     elif state == "absent":
         result["changed"] = git.removeRepo()
