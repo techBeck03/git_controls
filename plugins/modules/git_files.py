@@ -75,7 +75,7 @@ removed_files:
 '''
 
 from ansible.module_utils.basic import AnsibleModule
-from ansible.module_utils.git import GitModule, git_argument_spec
+from ansible_collections.techbeck03.git_controls.plugins.module_utils.git import GitModule, git_argument_spec
 
 def run_module():
     # define available arguments/parameters a user can pass to the module
