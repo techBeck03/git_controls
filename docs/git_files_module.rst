@@ -1,7 +1,5 @@
 .. Document meta
 
-:orphan:
-
 .. Anchors
 
 .. _ansible_collections.techbeck03.git_controls.git_files_module:
