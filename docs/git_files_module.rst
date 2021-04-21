@@ -267,7 +267,6 @@ Examples
 
 Return Values
 -------------
-Common return values are documented :ref:`here <common_return_values>`, the following are the fields unique to this module:
 
 .. raw:: html
 
