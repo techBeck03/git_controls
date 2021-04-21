@@ -18,35 +18,27 @@ options:
         description:
             - Username used for Github authorization
             - Required if I(git_token=None)
-            - If not set, the value of the B(GIT_USERNAME) environment variable is used.
+            - If not set, the value of the C(GIT_USERNAME) environment variable is used.
         type: str
-        env:
-            - name: GIT_USERNAME
         required: no
     git_password:
         description:
             - Password used for Github authorization
             - Required if I(git_token=None)
-            - If not set, the value of the B(GIT_PASSWORD) environment variable is used.
+            - If not set, the value of the C(GIT_PASSWORD) environment variable is used.
         type: str
-        env:
-            - name: GIT_PASSWORD
         required: no
     repo:
         description:
             - Name of the GitHub repository
-            - If not set, the value of the B(GIT_REPO) environment variable is used.
+            - If not set, the value of the C(GIT_REPO) environment variable is used.
         type: str
-        env:
-            - name: GIT_REPO
         required: yes
     org:
         description:
             - Name of the GitHub organization (or user account)
-            - If not set, the value of the B(GIT_ORG) environment variable is used.
+            - If not set, the value of the C(GIT_ORG) environment variable is used.
         type: str
-        env:
-            - name: GIT_ORG
         required: yes
     branch:
         description:
