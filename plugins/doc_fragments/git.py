@@ -9,10 +9,8 @@ options:
         description:
             - Git token used for authentication
             - Required if I(git_username=None)
-            - If not set, the value of the B(GIT_TOKEN) environment variable is used.
+            - If not set, the value of the C(GIT_TOKEN) environment variable is used.
         type: str
-        env:
-            - name: GIT_TOKEN
         required: no
     git_username:
         description:
